@@ -11,7 +11,7 @@ import java.util.List;
 @Stateless
 public class MovieDaoImpl implements MovieDao {
 
-    @PersistenceContext(unitName = "tp_note_2")
+    @PersistenceContext(unitName = "MoviePU")
     private EntityManager entityManager;
 
     @Override
