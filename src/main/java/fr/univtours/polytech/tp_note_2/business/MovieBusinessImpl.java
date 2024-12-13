@@ -26,8 +26,8 @@ public class MovieBusinessImpl implements MovieBusiness {
     }
 
     @Override
-    public MovieBean getMovie(Integer id) {
-       return new MovieBean();
+    public MovieBean getMovieById(Integer id) {
+       return movieDao.getMovieById(id);
         
     }
 

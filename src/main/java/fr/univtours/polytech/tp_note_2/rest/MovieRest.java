@@ -6,14 +6,11 @@ import java.util.List;
 
 import fr.univtours.polytech.tp_note_2.business.MovieBusiness;
 import fr.univtours.polytech.tp_note_2.model.MovieBean;
+import jakarta.ejb.EJB;
 import jakarta.inject.Inject;
-import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.HeaderParam;
-import jakarta.ws.rs.PATCH;
-import jakarta.ws.rs.POST;
-import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
@@ -23,10 +20,10 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.Status;
 
-@Path("")
+@Path("v1")
 public class MovieRest {
 
-    @Inject
+    @EJB
     MovieBusiness movieBusiness;
 
     
@@ -37,12 +34,14 @@ public class MovieRest {
         List<MovieBean> movies = this.movieBusiness.getMovies();
         List<MovieBean> results = new ArrayList<MovieBean>();
         if (null != filtre && !"".equals(filtre)) {
+            filtre.toLowerCase();
             for (MovieBean movie : movies) {
-                if (filtre.equalsIgnoreCase(movie.getTitle())) {
+                if (filtre.contains(movie.getTitle().toLowerCase())) {
+                    results.add(movie); 
+                }
+                if (filtre.equals(String.valueOf(movie.getNote()))) {
                     results.add(movie);
                 }
-
-                if (filtre.equalsIgnoreCase(String.valueOf(movie.getNote())));
             }
         } else {
             results = movies;
@@ -62,7 +61,7 @@ public class MovieRest {
     @Path("movies/{id}")
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     public MovieBean getLocation(@PathParam("id") Integer idMovie) {
-        MovieBean movieBean = this.movieBusiness.getMovie(idMovie);
+        MovieBean movieBean = this.movieBusiness.getMovieById(idMovie);
         return movieBean;
     }
 
@@ -70,18 +69,14 @@ public class MovieRest {
     @Path("movies/{id}")
     public Response deleteLocation(@PathParam("id") Integer idMovie,
             @HeaderParam(HttpHeaders.AUTHORIZATION) String auth) {
-        System.out.println(auth);
         if (!"42".equals(auth)) {
             return Response.status(Status.UNAUTHORIZED).build();
         } else {
-            MovieBean locationBean = this.movieBusiness.getMovie(idMovie);
+            MovieBean locationBean = this.movieBusiness.getMovieById(idMovie);
             if (null == locationBean) {
-                // La location n'existe pas. On renvoie un 404.
                 return Response.status(Status.NOT_FOUND).build();
             } else {
-                // La location existe. On la supprime ...
                 this.movieBusiness.deleteMovie(idMovie);
-                // ... et on renvoie un 204 par exemple.
                 return Response.status(Status.NO_CONTENT).build();
             }
         }

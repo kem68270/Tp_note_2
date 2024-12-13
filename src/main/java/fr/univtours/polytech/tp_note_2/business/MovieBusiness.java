@@ -10,7 +10,7 @@ public interface MovieBusiness {
 
     public List<MovieBean> getMovies();
 
-    public MovieBean getMovie(Integer id);
+    public MovieBean getMovieById(Integer id);
 
     public void updateMovie(MovieBean movieBean);
 
