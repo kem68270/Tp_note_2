@@ -29,14 +29,14 @@
             <th>Baisser Note</th>
             <th>Augmenter</th>
         </tr>
-        <c:forEach var="film" items="${films}">
+        <c:forEach var="film" items="${requestScope.films}">
             <tr>
-                <td>${film.titre}</td>
+                <td>${film.title}</td>
                 <td>${film.annee}</td>
-                <td>${film.acteurs}</td>
+                <td>${film.acteur}</td>
                 <td><img src="${film.affiche}" alt="Affiche" style="height: 100px;"/></td>
-                <td><a href="updateNote?id=${film.id}&action=decrease">-</a></td>
-                <td><a href="updateNote?id=${film.id}&action=increase">+</a></td>
+                <td><a href="updateNote?id=${film.note}&action=decrease">-</a></td>
+                <td><a href="updateNote?id=${film.note}&action=increase">+</a></td>
             </tr>
         </c:forEach>
     </table>

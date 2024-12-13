@@ -1,25 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>List of Movies</title>
+    <title>Liste des films</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+        }
+        th {
+            text-align: left;
+        }
+    </style>
 </head>
 <body>
+    <h1>Liste des films</h1>
     <table>
         <tr>
-            <th>Title</th>
-            <th>Note</th>
-            <th>Actions</th>
+            <th>Titre</th>
+            <th>Année</th>
+            <th>Acteurs</th>
+            <th>Affiche</th>
+            <th>Baisser Note</th>
+            <th>Augmenter</th>
         </tr>
-        <c:forEach var="movie" items="${movies}">
+        <c:forEach var="film" items="${requestScope.films}">
             <tr>
-                <td>${movie.title}</td>
-                <td>${movie.note}</td>
-                <td>
-                    <a href="updateNote?id=${movie.id}&action=increase">+</a>
-                    <a href="updateNote?id=${movie.id}&action=decrease">-</a>
-                </td>
+                <td>${film.title}</td>
+                <td>${film.annee}</td>
+                <td>${film.acteur}</td>
+                <td><img src="${film.affiche}" alt="Affiche" style="height: 100px;"/></td>
+                <td><a href="updateNote?id=${film.note}&action=decrease">-</a></td>
+                <td><a href="updateNote?id=${film.note}&action=increase">+</a></td>
             </tr>
         </c:forEach>
     </table>

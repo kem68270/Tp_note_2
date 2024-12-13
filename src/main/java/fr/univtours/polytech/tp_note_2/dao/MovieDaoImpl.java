@@ -4,6 +4,7 @@ import fr.univtours.polytech.tp_note_2.model.MovieBean;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 
 import java.util.List;
@@ -16,8 +17,9 @@ public class MovieDaoImpl implements MovieDao {
 
     @Override
     public List<MovieBean> getAllMovies() {
-        TypedQuery<MovieBean> query = entityManager.createQuery("SELECT m FROM Movie m", MovieBean.class);
-        return query.getResultList();
+        //TypedQuery<MovieBean> query = entityManager.createQuery("select * from moviebean", MovieBean.class);
+        Query requete = entityManager.createNativeQuery("select * from moviebean", MovieBean.class);
+        return requete.getResultList();
     }
 
     @Override

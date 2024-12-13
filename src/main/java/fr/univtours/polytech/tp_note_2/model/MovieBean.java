@@ -6,7 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
 @Entity
@@ -18,6 +18,12 @@ public class MovieBean implements Serializable {
     private Integer id;
     private String title;
     private Integer note;
+
+    @Transient
+    private String annee;
+
+    @Transient
+    private String acteur;
 
     public Integer getId() {
         return id;
@@ -37,5 +43,19 @@ public class MovieBean implements Serializable {
     public void setNote(Integer note) {
         this.note = note;
     }
+    public String getAnnee() {
+        return annee;
+    }
+    public void setAnnee(String annee) {
+        this.annee = annee;
+    }
+    public String getActeur() {
+        return acteur;
+    }
+    public void setActeur(String acteur) {
+        this.acteur = acteur;
+    }
+
+    
 
 }
