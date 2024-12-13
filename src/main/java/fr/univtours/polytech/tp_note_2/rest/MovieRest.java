@@ -7,7 +7,6 @@ import java.util.List;
 import fr.univtours.polytech.tp_note_2.business.MovieBusiness;
 import fr.univtours.polytech.tp_note_2.model.MovieBean;
 import jakarta.ejb.EJB;
-import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -24,7 +23,7 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.Status;
 
-@Path("V1")
+@Path("v1")
 public class MovieRest {
 
     @EJB
