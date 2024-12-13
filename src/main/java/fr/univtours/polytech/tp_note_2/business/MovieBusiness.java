@@ -6,7 +6,7 @@ import fr.univtours.polytech.tp_note_2.model.MovieBean;
 
 public interface MovieBusiness {
 
-    public void addMovie(MovieBean movieBean);
+    public void createMovie(MovieBean movieBean);
 
     public List<MovieBean> getMovies();
 

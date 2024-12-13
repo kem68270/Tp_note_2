@@ -13,7 +13,7 @@ public class MovieBusinessImpl implements MovieBusiness {
     //MovieDao movieDao;
 
     @Override
-    public void addMovie(MovieBean movieBean) {
+    public void createMovie(MovieBean movieBean) {
        
         
     }

@@ -1,2 +1,9 @@
-C:\JEE\ws_archisi\tp_note_2\src\main\java\fr\univtours\polytech\tp_note_2\JakartaRestConfiguration.java
-C:\JEE\ws_archisi\tp_note_2\src\main\java\fr\univtours\polytech\tp_note_2\resources\JakartaEE10Resource.java
+C:\JEE\ws_archisi\Tp_note_2\src\main\java\fr\univtours\polytech\tp_note_2\controller\FillDBServlet.java
+C:\JEE\ws_archisi\Tp_note_2\src\main\java\fr\univtours\polytech\tp_note_2\business\MovieBusiness.java
+C:\JEE\ws_archisi\Tp_note_2\src\main\java\fr\univtours\polytech\tp_note_2\model\MovieBean.java
+C:\JEE\ws_archisi\Tp_note_2\src\main\java\fr\univtours\polytech\tp_note_2\controller\MovieListServlet.java
+C:\JEE\ws_archisi\Tp_note_2\src\main\java\fr\univtours\polytech\tp_note_2\dao\MovieDao.java
+C:\JEE\ws_archisi\Tp_note_2\src\main\java\fr\univtours\polytech\tp_note_2\dao\MovieDaoImpl.java
+C:\JEE\ws_archisi\Tp_note_2\src\main\java\fr\univtours\polytech\tp_note_2\JakartaRestConfiguration.java
+C:\JEE\ws_archisi\Tp_note_2\src\main\java\fr\univtours\polytech\tp_note_2\business\MovieBusinessImpl.java
+C:\JEE\ws_archisi\Tp_note_2\src\main\java\fr\univtours\polytech\tp_note_2\resources\JakartaEE10Resource.java

@@ -1,2 +1,9 @@
 fr\univtours\polytech\tp_note_2\JakartaRestConfiguration.class
+fr\univtours\polytech\tp_note_2\business\MovieBusinessImpl.class
+fr\univtours\polytech\tp_note_2\model\MovieBean.class
 fr\univtours\polytech\tp_note_2\resources\JakartaEE10Resource.class
+fr\univtours\polytech\tp_note_2\dao\MovieDaoImpl.class
+fr\univtours\polytech\tp_note_2\business\MovieBusiness.class
+fr\univtours\polytech\tp_note_2\dao\MovieDao.class
+fr\univtours\polytech\tp_note_2\controller\MovieListServlet.class
+fr\univtours\polytech\tp_note_2\controller\FillDBServlet.class
