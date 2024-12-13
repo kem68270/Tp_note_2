@@ -88,7 +88,10 @@ public class MovieRest {
     @POST
     @Path("movies")
     @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-    public Response createMovie(MovieBean movieBean) {
+    public Response createMovie(MovieBean movieBean, @HeaderParam(HttpHeaders.AUTHORIZATION) String auth) {
+        if (!"42".equals(auth)) {
+            return Response.status(Status.UNAUTHORIZED).build();
+        }
         if (movieBean.getTitle() == null || movieBean.getTitle().isEmpty()) {
             return Response.status(Response.Status.BAD_REQUEST)
                         .entity("Title is required.")
@@ -109,7 +112,10 @@ public class MovieRest {
     @PUT
     @Path("movies/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response fullUpdateMovie(@PathParam("id") Integer idMovie, MovieBean movieBean) {
+    public Response fullUpdateMovie(@PathParam("id") Integer idMovie, MovieBean movieBean,  @HeaderParam(HttpHeaders.AUTHORIZATION) String auth) {
+        if (!"42".equals(auth)) {
+            return Response.status(Status.UNAUTHORIZED).build();
+        }
         MovieBean oldMovieBean = this.movieBusiness.getMovieById(idMovie);
         if (null == oldMovieBean) {
             return Response.status(Response.Status.NOT_FOUND).build();
@@ -138,7 +144,10 @@ public class MovieRest {
     @PATCH
     @Path("movies/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response partialUpdateMovie(@PathParam("id") Integer idMovie, MovieBean movieBean) {
+    public Response partialUpdateMovie(@PathParam("id") Integer idMovie, MovieBean movieBean,  @HeaderParam(HttpHeaders.AUTHORIZATION) String auth) {
+        if (!"42".equals(auth)) {
+            return Response.status(Status.UNAUTHORIZED).build();
+        }
         MovieBean oldMovieBean = this.movieBusiness.getMovieById(idMovie);
         if (null == oldMovieBean) {
             return Response.status(Response.Status.NOT_FOUND).build();
