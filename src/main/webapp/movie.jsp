@@ -5,6 +5,7 @@
 <html>
 <head>
     <title>Liste des films</title>
+    <meta charset="UTF-8" />
     <style>
         table, th, td {
             border: 1px solid black;
@@ -35,7 +36,7 @@
                 <td>${film.title}</td>
                 <td>${film.annee}</td>
                 <td>${film.acteur}</td>
-                <td><img src="${film.affiche}" alt="Affiche" style="height: 100px;"/></td>
+                <td><img src="${film.poster}" alt="Affiche" style="height: 100px;"/></td>
                 <td><a href="updateNote?id=${film.id}&action=decrease">-</a></td>
                 <td>${film.note}</td>
                 <td><a href="updateNote?id=${film.id}&action=increase">+</a></td>

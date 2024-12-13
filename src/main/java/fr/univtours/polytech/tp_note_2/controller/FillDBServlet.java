@@ -32,6 +32,7 @@ public class FillDBServlet extends HttpServlet {
 
         MovieBean movie3 = new MovieBean();
         movie3.setTitle("Fast and Furious");
+        movie3.setNote(1);
         movieBusiness.createMovie(movie3);
 
         MovieBean movie4 = new MovieBean();

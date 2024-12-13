@@ -16,7 +16,6 @@ public class MovieDaoImpl implements MovieDao {
 
     @Override
     public List<MovieBean> getAllMovies() {
-        //TypedQuery<MovieBean> query = entityManager.createQuery("select * from moviebean", MovieBean.class);
         Query requete = entityManager.createNativeQuery("select * from moviebean", MovieBean.class);
         return requete.getResultList();
     }
