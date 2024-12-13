@@ -20,7 +20,7 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.Status;
 
-@Path("v1")
+@Path("V1")
 public class MovieRest {
 
     @EJB
@@ -39,9 +39,7 @@ public class MovieRest {
                 if (filtre.contains(movie.getTitle().toLowerCase())) {
                     results.add(movie); 
                 }
-                if (filtre.equals(String.valueOf(movie.getNote()))) {
-                    results.add(movie);
-                }
+                if (filtre.equals(String.valueOf(movie.getNote())));
             }
         } else {
             results = movies;
@@ -81,63 +79,89 @@ public class MovieRest {
             }
         }
     }
-/* 
 
- // Méthode appelée lorsqu'on ajoute toutes les informations dans le corps de la
-    // requête.
+  //Méthode appelée lorsqu'on ajoute toutes les informations dans le corps de la requête.
     @POST
-    @Path("locations")
-    @Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-    public Response createLocation(LocationBean locationBean) {
-        this.locationBusiness.addLocation(locationBean);
-        return Response.status(Status.ACCEPTED).build();
+    @Path("movies")
+    @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    public Response createMovie(MovieBean movieBean) {
+        if (movieBean.getTitle() == null || movieBean.getTitle().isEmpty()) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                        .entity("Title is required.")
+                        .build();
+        }
+
+        if (movieBean.getNote() != null && (movieBean.getNote() < 1 || movieBean.getNote() > 5)) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                        .entity("Note must be between 1 and 5.")
+                        .build();
+        }
+        this.movieBusiness.createMovie(movieBean);
+
+        return Response.status(Response.Status.CREATED).build();
     }
+
 
     @PUT
-    @Path("locations/{id}")
-    public Response fullUpdateLocation(@PathParam("id") Integer idLocation, LocationBean locationBean) {
-        LocationBean odlLocationBean = this.locationBusiness.getLocation(idLocation);
-        if (null == odlLocationBean) {
-            return Response.status(Status.NOT_FOUND).build();
+    @Path("movies/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response fullUpdateMovie(@PathParam("id") Integer idMovie, MovieBean movieBean) {
+        MovieBean oldMovieBean = this.movieBusiness.getMovieById(idMovie);
+        if (null == oldMovieBean) {
+            return Response.status(Response.Status.NOT_FOUND).build();
         }
 
-        // On met à jour tous les champs :
-        odlLocationBean.setAddress(locationBean.getAddress());
-        odlLocationBean.setCity(locationBean.getCity());
-        odlLocationBean.setNightPrice(locationBean.getNightPrice());
-        odlLocationBean.setPicture(locationBean.getPicture());
-        odlLocationBean.setZipCode(locationBean.getZipCode());
+        oldMovieBean.setTitle(movieBean.getTitle());
+        oldMovieBean.setAnnee(movieBean.getAnnee());
+        oldMovieBean.setActeur(movieBean.getActeur());
+        oldMovieBean.setPoster(movieBean.getPoster());
 
-        this.locationBusiness.updateLocation(odlLocationBean);
-        return Response.status(Status.ACCEPTED).build();
+        if (movieBean.getNote() != null && movieBean.getNote() >= 1 && movieBean.getNote() <= 5) {
+            oldMovieBean.setNote(movieBean.getNote());
+        } else {
+            return Response.status(Response.Status.BAD_REQUEST)
+                        .entity("Note must be between 1 and 5.")
+                        .build();
+        }
+
+
+        this.movieBusiness.updateMovie(oldMovieBean);
+
+        return Response.status(Response.Status.ACCEPTED).build();
     }
 
+
     @PATCH
-    @Path("locations/{id}")
-    public Response partialUpdateLocation(@PathParam("id") Integer idLocation, LocationBean locationBean) {
-        LocationBean odlLocationBean = this.locationBusiness.getLocation(idLocation);
-        if (null == odlLocationBean) {
-            return Response.status(Status.NOT_FOUND).build();
+    @Path("movies/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response partialUpdateMovie(@PathParam("id") Integer idMovie, MovieBean movieBean) {
+        MovieBean oldMovieBean = this.movieBusiness.getMovieById(idMovie);
+        if (null == oldMovieBean) {
+            return Response.status(Response.Status.NOT_FOUND).build();
         }
 
-        // Seul les champs renseignés dans le bean envoyé sont mis à jour en base de données.
-        if (null != locationBean.getAddress() && !"".equals(locationBean.getAddress())) {
-            odlLocationBean.setAddress(locationBean.getAddress());
+        if (null != movieBean.getTitle() && !movieBean.getTitle().isEmpty()) {
+            oldMovieBean.setTitle(movieBean.getTitle());
         }
-        if (null != locationBean.getCity() && !"".equals(locationBean.getCity())) {
-            odlLocationBean.setCity(locationBean.getCity());
+        if (null != movieBean.getAnnee()) {
+            oldMovieBean.setAnnee(movieBean.getAnnee());
         }
-        if (null != locationBean.getNightPrice() && !"".equals(locationBean.getNightPrice())) {
-            odlLocationBean.setNightPrice(locationBean.getNightPrice());
+        if (null != movieBean.getActeur() && !movieBean.getActeur().isEmpty()) {
+            oldMovieBean.setActeur(movieBean.getActeur());
         }
-        if (null != locationBean.getPicture()) {
-            odlLocationBean.setPicture(locationBean.getPicture());
+        if (null != movieBean.getPoster() && !movieBean.getPoster().isEmpty()) {
+            oldMovieBean.setPoster(movieBean.getPoster());
         }
-        if (null != locationBean.getZipCode() && !"".equals(locationBean.getZipCode())) {
-            odlLocationBean.setZipCode(locationBean.getZipCode());
+        if (null != movieBean.getNote()) {
+            int note = movieBean.getNote();
+            if (note >= 1 && note <= 5) {
+                oldMovieBean.setNote(note);
+            }
         }
 
-        this.locationBusiness.updateLocation(odlLocationBean);
-        return Response.status(Status.ACCEPTED).build();
-    }*/
+        this.movieBusiness.updateMovie(oldMovieBean);
+
+        return Response.status(Response.Status.ACCEPTED).build();
+}
+
 }

@@ -1,17 +1,13 @@
 package fr.univtours.polytech.tp_note_2.model;
 
 import java.io.Serializable;
-import java.util.Base64;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlRootElement;
-import jakarta.xml.bind.annotation.XmlTransient;
 
 @Entity
 @XmlRootElement
