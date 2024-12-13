@@ -14,7 +14,7 @@ public class MovieBean {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String nom;
+    private String title;
     private Integer note;
 
     public Integer getId() {
@@ -23,11 +23,11 @@ public class MovieBean {
     public void setId(Integer id) {
         this.id = id;
     }
-    public String getNom() {
-        return nom;
+    public String getTitle() {
+        return title;
     }
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setTitle(String title) {
+        this.title = title;
     }
     public Integer getNote() {
         return note;
