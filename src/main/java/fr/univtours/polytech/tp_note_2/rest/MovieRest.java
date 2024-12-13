@@ -37,12 +37,12 @@ public class MovieRest {
         List<MovieBean> movies = this.movieBusiness.getMovies();
         List<MovieBean> results = new ArrayList<MovieBean>();
         if (null != filtre && !"".equals(filtre)) {
+            filtre.toLowerCase();
             for (MovieBean movie : movies) {
-                if (filtre.equalsIgnoreCase(movie.getTitle())) {
-                    results.add(movie);
+                if (filtre.contains(movie.getTitle().toLowerCase())) {
+                    results.add(movie); 
                 }
-
-                if (filtre.equalsIgnoreCase(String.valueOf(movie.getNote())));
+                if (filtre.equals(String.valueOf(movie.getNote())));
             }
         } else {
             results = movies;
@@ -70,7 +70,6 @@ public class MovieRest {
     @Path("movies/{id}")
     public Response deleteLocation(@PathParam("id") Integer idMovie,
             @HeaderParam(HttpHeaders.AUTHORIZATION) String auth) {
-        System.out.println(auth);
         if (!"42".equals(auth)) {
             return Response.status(Status.UNAUTHORIZED).build();
         } else {
