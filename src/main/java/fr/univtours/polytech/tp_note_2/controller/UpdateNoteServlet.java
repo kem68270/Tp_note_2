@@ -40,7 +40,7 @@ public class UpdateNoteServlet extends HttpServlet {
     }
 
     /**
-     * Met à jour la note du film si elle reste entre 1 et 5.
+     * Met à jour la note du film si elle respecte les règles RG1 et RG3.
      * 
      * @param movie  Le film à mettre à jour
      * @param action L'action ("increase" ou "decrease")

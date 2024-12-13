@@ -21,7 +21,7 @@ public class MovieBusinessImpl implements MovieBusiness {
 
     @Override
     public void deleteMovie(Integer id) {
-        
+         movieDao.deleteMovie(id);
         
     }
 

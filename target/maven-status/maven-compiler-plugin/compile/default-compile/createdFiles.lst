@@ -12,4 +12,5 @@ fr\univtours\polytech\tp_note_2\controller\FillDBServlet.class
 fr\univtours\polytech\tp_note_2\model\MovieBean.class
 fr\univtours\polytech\tp_note_2\dao\MovieDaoImpl.class
 fr\univtours\polytech\tp_note_2\model\detailMovie\WsDetailMovieResult.class
+fr\univtours\polytech\tp_note_2\controller\UpdateNoteServlet.class
 fr\univtours\polytech\tp_note_2\dao\DetailMovieDao.class

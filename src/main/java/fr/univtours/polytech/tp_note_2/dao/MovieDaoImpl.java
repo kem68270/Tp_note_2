@@ -39,5 +39,13 @@ public class MovieDaoImpl implements MovieDao {
     public MovieBean getMovieById(int id) {
         return entityManager.find(MovieBean.class, id);
     }
+
+    @Override
+    public void deleteMovie(int id) {
+        MovieBean movie = entityManager.find(MovieBean.class, id);
+        if (movie != null) {
+            entityManager.remove(movie);
+        }
+    }
 }
 

@@ -8,5 +8,6 @@ public interface MovieDao {
     MovieBean getMovieById(int id);
     void updateMovie(MovieBean movie);
     void createMovie(MovieBean movie);
+    void deleteMovie(int id);
     
 }
