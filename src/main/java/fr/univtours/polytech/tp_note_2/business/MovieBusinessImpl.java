@@ -2,6 +2,7 @@ package fr.univtours.polytech.tp_note_2.business;
 
 import java.util.List;
 
+import fr.univtours.polytech.tp_note_2.dao.MovieDao;
 import fr.univtours.polytech.tp_note_2.model.MovieBean;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
@@ -10,11 +11,11 @@ import jakarta.inject.Inject;
 public class MovieBusinessImpl implements MovieBusiness {
 
     @Inject
-    //MovieDao movieDao;
+    MovieDao movieDao;
 
     @Override
     public void createMovie(MovieBean movieBean) {
-       
+       movieDao.createMovie(movieBean);
         
     }
 
@@ -26,14 +27,14 @@ public class MovieBusinessImpl implements MovieBusiness {
 
     @Override
     public MovieBean getMovie(Integer id) {
-       
-        return null;
+       return new MovieBean();
+        
     }
 
     @Override
     public List<MovieBean> getMovies() {
         
-        return null;
+        return movieDao.getAllMovies();
     }
 
     @Override

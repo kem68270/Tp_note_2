@@ -1,5 +1,7 @@
 package fr.univtours.polytech.tp_note_2.model;
 
+import java.io.Serializable;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,7 +11,7 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @XmlRootElement
-public class MovieBean {
+public class MovieBean implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
