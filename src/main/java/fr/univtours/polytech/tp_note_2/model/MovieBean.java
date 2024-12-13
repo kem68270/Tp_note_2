@@ -1,13 +1,17 @@
 package fr.univtours.polytech.tp_note_2.model;
 
 import java.io.Serializable;
+import java.util.Base64;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlTransient;
 
 @Entity
 @XmlRootElement
@@ -20,7 +24,10 @@ public class MovieBean implements Serializable {
     private Integer note;
 
     @Transient
-    private String annee;
+    private String poster;
+
+    @Transient
+    private Integer annee;
 
     @Transient
     private String acteur;
@@ -43,10 +50,10 @@ public class MovieBean implements Serializable {
     public void setNote(Integer note) {
         this.note = note;
     }
-    public String getAnnee() {
+    public Integer getAnnee() {
         return annee;
     }
-    public void setAnnee(String annee) {
+    public void setAnnee(Integer annee) {
         this.annee = annee;
     }
     public String getActeur() {
@@ -54,6 +61,12 @@ public class MovieBean implements Serializable {
     }
     public void setActeur(String acteur) {
         this.acteur = acteur;
+    }
+    public String getPoster() {
+        return poster;
+    }
+    public void setPoster(String poster) {
+        this.poster = poster;
     }
 
     

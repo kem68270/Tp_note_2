@@ -5,6 +5,7 @@
 <html>
 <head>
     <title>Liste des films</title>
+    <meta charset="UTF-8" />
     <style>
         table, th, td {
             border: 1px solid black;
@@ -27,6 +28,7 @@
             <th>Acteurs</th>
             <th>Affiche</th>
             <th>Baisser Note</th>
+            <th>Note</th>
             <th>Augmenter</th>
         </tr>
         <c:forEach var="film" items="${requestScope.films}">
@@ -34,9 +36,10 @@
                 <td>${film.title}</td>
                 <td>${film.annee}</td>
                 <td>${film.acteur}</td>
-                <td><img src="${film.affiche}" alt="Affiche" style="height: 100px;"/></td>
-                <td><a href="updateNote?id=${film.note}&action=decrease">-</a></td>
-                <td><a href="updateNote?id=${film.note}&action=increase">+</a></td>
+                <td><img src="${film.poster}" alt="Affiche" style="height: 100px;"/></td>
+                <td><a href="updateNote?id=${film.id}&action=decrease">-</a></td>
+                <td>${film.note}</td>
+                <td><a href="updateNote?id=${film.id}&action=increase">+</a></td>
             </tr>
         </c:forEach>
     </table>
