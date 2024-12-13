@@ -5,6 +5,8 @@ C:\JEE\ws_archisi\tp_note_2\src\main\java\fr\univtours\polytech\tp_note_2\model\
 C:\JEE\ws_archisi\tp_note_2\src\main\java\fr\univtours\polytech\tp_note_2\controller\MovieListServlet.java
 C:\JEE\ws_archisi\tp_note_2\src\main\java\fr\univtours\polytech\tp_note_2\dao\MovieDao.java
 C:\JEE\ws_archisi\tp_note_2\src\main\java\fr\univtours\polytech\tp_note_2\business\DetailMovieBusinessImpl.java
+C:\JEE\ws_archisi\tp_note_2\src\main\java\fr\univtours\polytech\tp_note_2\rest\WebApp.java
+C:\JEE\ws_archisi\tp_note_2\src\main\java\fr\univtours\polytech\tp_note_2\rest\MovieRest.java
 C:\JEE\ws_archisi\tp_note_2\src\main\java\fr\univtours\polytech\tp_note_2\business\MovieBusinessImpl.java
 C:\JEE\ws_archisi\tp_note_2\src\main\java\fr\univtours\polytech\tp_note_2\dao\DetailMovieDao.java
 C:\JEE\ws_archisi\tp_note_2\src\main\java\fr\univtours\polytech\tp_note_2\resources\JakartaEE10Resource.java

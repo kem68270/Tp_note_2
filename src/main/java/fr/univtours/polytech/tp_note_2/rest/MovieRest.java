@@ -62,7 +62,7 @@ public class MovieRest {
     @Path("movies/{id}")
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     public MovieBean getLocation(@PathParam("id") Integer idMovie) {
-        MovieBean movieBean = this.movieBusiness.getMovie(idMovie);
+        MovieBean movieBean = this.movieBusiness.getMovieById(idMovie);
         return movieBean;
     }
 
@@ -74,7 +74,7 @@ public class MovieRest {
         if (!"42".equals(auth)) {
             return Response.status(Status.UNAUTHORIZED).build();
         } else {
-            MovieBean locationBean = this.movieBusiness.getMovie(idMovie);
+            MovieBean locationBean = this.movieBusiness.getMovieById(idMovie);
             if (null == locationBean) {
                 // La location n'existe pas. On renvoie un 404.
                 return Response.status(Status.NOT_FOUND).build();
