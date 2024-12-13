@@ -6,4 +6,5 @@ fr\univtours\polytech\tp_note_2\dao\MovieDaoImpl.class
 fr\univtours\polytech\tp_note_2\business\MovieBusiness.class
 fr\univtours\polytech\tp_note_2\dao\MovieDao.class
 fr\univtours\polytech\tp_note_2\controller\MovieListServlet.class
+fr\univtours\polytech\tp_note_2\controller\UpdateNoteServlet.class
 fr\univtours\polytech\tp_note_2\controller\FillDBServlet.class
