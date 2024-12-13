@@ -14,7 +14,7 @@ import fr.univtours.polytech.tp_note_2.model.MovieBean;
 public class UpdateNoteServlet extends HttpServlet {
 
     @Inject
-    private MovieDao movieDao; // Injection du DAO grâce à CDI
+    private MovieDao movieDao; 
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,9 +28,9 @@ public class UpdateNoteServlet extends HttpServlet {
             if (movie != null) {
                 boolean updated = updateMovieNote(movie, action);
                 if (updated) {
-                    movieDao.updateMovie(movie);  // Mettez à jour le film dans la base de données
+                    movieDao.updateMovie(movie);  
                 }
-                response.sendRedirect("movieList"); // Redirigez vers la servlet qui affiche les films
+                response.sendRedirect("movieList"); 
             } else {
                 response.sendError(HttpServletResponse.SC_NOT_FOUND, "Film not found");
             }
@@ -47,10 +47,10 @@ public class UpdateNoteServlet extends HttpServlet {
      * @return true si la note a été mise à jour, false sinon
      */
     private boolean updateMovieNote(MovieBean movie, String action) {
-        Integer currentNote = movie.getNote(); // Assurez-vous que la note peut être nulle
+        Integer currentNote = movie.getNote();
 
+        /*Si y a pas de note */
         if (currentNote == null) {
-            // RG1 et RG3 : Initialisation de la note
             if ("increase".equals(action)) {
                 movie.setNote(1); // RG1
             } else if ("decrease".equals(action)) {
@@ -59,7 +59,7 @@ public class UpdateNoteServlet extends HttpServlet {
             return true;
         }
 
-        // Note existante : Appliquer les règles entre 1 et 5
+        
         if ("increase".equals(action) && currentNote < 5) {
             movie.setNote(currentNote + 1); // Incrémente la note
             return true;
