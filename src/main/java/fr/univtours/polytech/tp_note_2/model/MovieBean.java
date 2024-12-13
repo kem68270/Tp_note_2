@@ -9,7 +9,7 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @XmlRootElement
-public class FilmBean {
+public class MovieBean {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
