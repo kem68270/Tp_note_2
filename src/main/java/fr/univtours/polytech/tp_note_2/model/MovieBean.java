@@ -9,7 +9,7 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @XmlRootElement
-public class FilmBean {
+public class MovieBean {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,10 +23,10 @@ public class FilmBean {
     public void setId(Integer id) {
         this.id = id;
     }
-    public String getNom() {
+    public String getTitle() {
         return nom;
     }
-    public void setNom(String nom) {
+    public void setTitle(String nom) {
         this.nom = nom;
     }
     public Integer getNote() {
